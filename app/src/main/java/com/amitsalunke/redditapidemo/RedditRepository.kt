@@ -24,14 +24,24 @@ class RedditRepository(
         emit(Dataset.Loading)
         try {
             val redditNetworkEntities: RedditResponse = redditAPIRequest.getRedditAPIList();
-            val listData: ArrayList<Data>?  = ArrayList()
-            for (data in redditNetworkEntities.data.children){
-                //val redditData = redditDataNetworkMapper.mapEntityToDomainList(data.data)
-                //val
+            val listData: ArrayList<Data>? = ArrayList()
+
+            for (data in redditNetworkEntities.data.children) {
                 listData?.add(data.data)
             }
-            val redditData = listData?.let { redditDataNetworkMapper.mapEntityToDomainList(it) }
 
+            val redditData: List<RedditData>? = listData?.let {
+                redditDataNetworkMapper.mapEntityToDomainList(it)
+            }
+
+            if (redditData != null) {
+                for (rData in redditData) {
+                    redditDao.insert(redditDataCacheMapper.mapDomainToEntity(rData))
+                }
+            }
+
+            val redditCacheEntity = redditDao.getRedditData()
+            emit(Dataset.Success(redditDataCacheMapper.mapEntityToDomainList(redditCacheEntity)))
         } catch (exe: Exception) {
             Log.e("Rep", "Exeception occured  $exe ")
             emit(Dataset.Error(exe))
