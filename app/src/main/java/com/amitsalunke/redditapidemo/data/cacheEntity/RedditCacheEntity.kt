@@ -4,11 +4,12 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "RedditData")
-class RedditCacheEntity(
+data class RedditCacheEntity(
+    var author_fullname: String,
+    var title: String,
+    var name: String,
+    var total_awards_received: Int
+) {
     @PrimaryKey(autoGenerate = true)
-    private var id: Int,
-    private var author_fullname: String,
-    private var title: String,
-    private var name: String,
-    private var total_awards_received: Int
-)
+    private var id: Int = 0
+}
