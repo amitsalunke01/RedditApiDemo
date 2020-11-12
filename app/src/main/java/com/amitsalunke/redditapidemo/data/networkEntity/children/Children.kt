@@ -6,9 +6,9 @@ import com.google.gson.annotations.SerializedName
 data class Children(
     @SerializedName("kind")
     @Expose
-    private var kind: String,
+    var kind: String,
 
     @SerializedName("data")
     @Expose
-    private var data: Data
+    var data: Data
 )

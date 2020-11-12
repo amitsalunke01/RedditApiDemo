@@ -7,14 +7,14 @@ import com.google.gson.annotations.SerializedName
 data class Data(
     @SerializedName("modhash")
     @Expose
-    private var modhash: String,
+    var modhash: String,
 
     @SerializedName("dist")
     @Expose
-    private var dist: String,
+    var dist: String,
 
     @SerializedName("children")
     @Expose
-    private var children: ArrayList<Children>
+    var children: ArrayList<Children>
 
 )

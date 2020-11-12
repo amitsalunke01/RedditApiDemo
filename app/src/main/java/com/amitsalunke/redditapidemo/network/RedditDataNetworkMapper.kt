@@ -23,7 +23,7 @@ class RedditDataNetworkMapper : EntityMapper<Data, RedditData> {
         )
     }
 
-    fun mapEntityToDomainList(data: List<Data>): List<RedditData> {
+    fun mapEntityToDomainList(data: ArrayList<Data>): List<RedditData> {
         return data.map { data -> mapEntityToDomain(data) }
     }
 }
