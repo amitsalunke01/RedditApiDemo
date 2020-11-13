@@ -1,5 +1,7 @@
 package com.amitsalunke.redditapidemo
 
+import androidx.hilt.Assisted
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.*
 import com.amitsalunke.redditapidemo.data.model.RedditData
 import com.amitsalunke.redditapidemo.util.Dataset
@@ -7,9 +9,9 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 
-class RedditViewModel(
+class RedditViewModel @ViewModelInject constructor(
     private val redditRepository: RedditRepository,
-    private val savedStateHandle: SavedStateHandle
+    @Assisted private val savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
     private var data: MutableLiveData<Dataset<List<RedditData>>> = MutableLiveData()

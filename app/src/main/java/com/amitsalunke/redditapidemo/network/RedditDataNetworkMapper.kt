@@ -3,8 +3,9 @@ package com.amitsalunke.redditapidemo.network
 import com.amitsalunke.redditapidemo.data.model.RedditData
 import com.amitsalunke.redditapidemo.data.networkEntity.children.Data
 import com.amitsalunke.redditapidemo.util.EntityMapper
+import javax.inject.Inject
 
-class RedditDataNetworkMapper : EntityMapper<Data, RedditData> {
+class RedditDataNetworkMapper @Inject constructor() : EntityMapper<Data, RedditData> {
     override fun mapEntityToDomain(entity: Data): RedditData {
         return RedditData(
             author_fullname = entity.author_fullname,

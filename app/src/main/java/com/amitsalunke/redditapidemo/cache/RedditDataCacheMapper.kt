@@ -3,8 +3,9 @@ package com.amitsalunke.redditapidemo.cache
 import com.amitsalunke.redditapidemo.data.cacheEntity.RedditCacheEntity
 import com.amitsalunke.redditapidemo.data.model.RedditData
 import com.amitsalunke.redditapidemo.util.EntityMapper
+import javax.inject.Inject
 
-class RedditDataCacheMapper : EntityMapper<RedditCacheEntity, RedditData> {
+class RedditDataCacheMapper @Inject constructor() : EntityMapper<RedditCacheEntity, RedditData> {
     override fun mapEntityToDomain(entity: RedditCacheEntity): RedditData {
         return RedditData(
             author_fullname = entity.author_fullname,

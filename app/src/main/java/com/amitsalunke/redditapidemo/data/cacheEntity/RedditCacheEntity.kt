@@ -11,5 +11,5 @@ data class RedditCacheEntity(
     var total_awards_received: Int
 ) {
     @PrimaryKey(autoGenerate = true)
-    private var id: Int = 0
+    var id: Int = 0
 }
